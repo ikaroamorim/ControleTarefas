@@ -13,7 +13,6 @@ namespace ControleTarefas
   {
     public static void Main(string[] args)
     {
-      Console.WriteLine("Teste");
       CreateHostBuilder(args).Build().Run();
       
     }

@@ -12,7 +12,7 @@ namespace ControleTarefas.Classes
 
     public override string ToString()
     {
-      return $"Aluno Id:{Id} \t Nome:{Nome}";
+      return $"Aluno Id:{Id} \t Nome:{Nome} \n";
     }
   }
 }
