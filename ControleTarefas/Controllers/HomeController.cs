@@ -22,6 +22,9 @@ namespace ControleTarefas.Controllers
 
     public IActionResult Index()
     {
+      var _repo = new TarefaDAOEntity();
+      ViewBag.Tarefa = _repo.Tarefas().Count;
+      ViewBag.Aluno = _repo.Alunos().Count;
       return View();
     }
 
@@ -36,11 +39,6 @@ namespace ControleTarefas.Controllers
       return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    public static Task ExibeHome(HttpContext context)
-    {
-      var html = HtmlUtils.CarregaArquivoHtml("Home.html"); ;
-      return context.Response.WriteAsync(html);
-    }
 
   }
 }

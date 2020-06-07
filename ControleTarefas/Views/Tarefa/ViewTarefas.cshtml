@@ -7,13 +7,13 @@
 <h1>ViewTarefas</h1>
 
 <p>
-  <a asp-action="Create">Create New</a>
+  <a asp-action="AddForm">Create New</a>
 </p>
 <table class="table">
   <thead>
     <tr>
       <th>
-        Aluno
+        Id do Aluno
       </th>
       <th>
         Atividade
@@ -30,6 +30,7 @@
       <th>
         Vencido?
       </th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -37,6 +38,7 @@
     {
       <tr>
         <td>
+         @item.AlunoId
         </td>
         <td>
           @item.Nome
@@ -69,6 +71,9 @@
               Entrega no prazo!!
             </div>
           }
+        </td>
+        <td>
+          <a href="/Tarefa/EditForm?TarefaId=@item.Id"><button type="button" class="btn btn-dark">Editar</button></a>
         </td>
 
       </tr>

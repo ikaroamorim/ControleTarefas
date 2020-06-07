@@ -35,16 +35,54 @@ namespace ControleTarefas.Controllers
     {
       var _repo = new TarefaDAOEntity();
       ViewBag.Tarefas = _repo.Tarefas();
+      ViewBag.Alunos = _repo.Alunos();
+      var t = _repo.Alunos();
       return View("ViewTarefas");
     }
 
-    public IActionResult Delete(int id)
+    public IActionResult Delete(int tarefaId)
     {
       var _repo = new TarefaDAOEntity();
-      var tarefa = _repo.Tarefas().First(l => l.Id == id);
+      var tarefa = _repo.Tarefas().First(l => l.Id == tarefaId);
       _repo.ExcluirTarefa(tarefa);
       return View("DoneAction");
     }
+
+    public IActionResult DeleteForm()
+    {
+      var _repo = new TarefaDAOEntity();
+      ViewBag.Tarefas = _repo.Tarefas();
+      return View("DeleteTarefaForm");
+    }
+
+    public IActionResult Edit(int tarefaId, int alunoid, string tarefa, string materia, DateTime prazo, DateTime entrega)
+    {
+      var _repo = new TarefaDAOEntity();
+      var tar = _repo.Tarefas().First(l => l.Id == tarefaId);
+      tar.Nome = tarefa;
+      tar.Materia = materia;
+      if (prazo!=null)
+      {
+        tar.Prazo = prazo;
+      }
+      if (entrega != null)
+      {
+        tar.DtEntrega = entrega;
+      }
+      _repo.AtualizarTarefa(tar);
+      return View("DoneAction");
+    }
+
+    public IActionResult EditForm(int tarefaId)
+    {
+      var _repo = new TarefaDAOEntity();
+      ViewBag.Tarefa = _repo.Tarefas().First(l => l.Id == tarefaId);
+      var t = _repo.Tarefas().First(l => l.Id == tarefaId);
+      ViewBag.Aluno = _repo.Alunos().First(l => l.Id == t.AlunoId);
+      
+      return View("EditForm");
+    }
+
 
   }
 }

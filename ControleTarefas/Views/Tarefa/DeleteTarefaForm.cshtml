@@ -1,0 +1,33 @@
+﻿@model ControleTarefas.Classes.Tarefa
+
+@{
+  ViewData["Title"] = "AddTarefaForm";
+}
+
+<h1>Exclusão de Tarefa </h1>
+
+<h4>Tarefa</h4>
+<hr />
+<div class="row">
+  <div class="col-md-4">
+    <form action="/Tarefa/Delete" method="POST">
+      <div class="text-danger"></div>
+      <div class="form-group">
+        <label for="tarefaId" class="control-label">Tarefa</label>
+        <select name="tarefaId" id="tarefaId">
+          @foreach (var tarefa in ViewBag.Tarefas)
+          {
+            <option value=@tarefa.Id>Id: @tarefa.Id - @tarefa.Nome</option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<a href="/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar para Home!</a>
+
+

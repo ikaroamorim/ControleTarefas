@@ -1,0 +1,44 @@
+﻿
+@{
+  ViewData["Title"] = "EditForm";
+}
+
+<h1>Formlário de edição</h1>
+<hr />
+<div class="row">
+  <div class="col-md-4">
+    <form action="/Tarefa/Edit" method="POST">
+      <div class="text-danger"></div>
+      <div class="form-group">
+        <label for="tarefaId" class="control-label">Id da Tarefa</label>
+        <input name="tarefaId" id="tarefaID" class="form-control" value="@ViewBag.Tarefa.Id"readonly />
+      </div>
+      <div class="form-group">
+        <label for="alunoId" class="control-label">Aluno</label>
+        <select name="alunoId" id="AlunoId">
+          <option value=@ViewBag.Aluno.Id>@ViewBag.Aluno.Nome</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="tarefa" class="control-label">Tarefa</label>
+        <input name="tarefa" id="tarefa" class="form-control" value="@ViewBag.Tarefa.Nome"/>
+      </div>
+      <div class="form-group">
+        <label for="materia" class="control-label">Matéria</label>
+        <input name="materia" id="materia" class="form-control" value="@ViewBag.Tarefa.Materia"/>
+      </div>
+      <div class="form-group">
+        <label for="prazo" class="control-label">Prazo de Entrega</label>
+        <input type="date" name="prazo" id="prazo" class="form-control" placeholder="@ViewBag.Tarefa.Prazo.Date" />
+      </div>
+      <div class="form-group">
+        <label for="entrega" class="control-label">Data de Entrega</label>
+        <input type="date" name="entrega" id="entrega" class="form-control" placeholder="@ViewBag.Tarefa.DtEntrega.Date" />
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Alterar" class="btn btn-warning" />
+      </div>
+    </form>
+  </div>
+</div>
+
