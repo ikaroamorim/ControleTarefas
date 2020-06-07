@@ -1,15 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
-using ControleTarefas.Classes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -51,32 +41,14 @@ namespace ControleTarefas
 
       app.UseEndpoints(endpoints =>
       {
-        endpoints.MapGet("/", HomeFunctions.ExibeHome);
-        endpoints.MapPost("/Aluno/Cadastrar", AlunoFunctions.CadastraAlunoQuery);
-        endpoints.MapGet("/Aluno", AlunoFunctions.ExibeAlunos);
-        endpoints.MapGet("/Aluno/Form", AlunoFunctions.ExibeFormularioAluno);
-
-        endpoints.MapGet("/Aluno/Consulta/{id:int}", AlunoFunctions.ConsultaAlunoId);
-        
-
-        
-
+        endpoints.MapControllerRoute(
+                  name: "default",
+                  pattern: "{controller=Home}/{action=Index}/{id?}");
       });
-      /*
-            app.UseEndpoints(endpoints =>
-            {
-              endpoints.MapControllerRoute(
-                        name: "default",
-                        pattern: "{controller=Home}/{action=Index}/{id?}");
-              endpoints.MapControllerRoute(
-                        name: "exibeAluno",
-                        pattern: "/Aluno"
-                );
-            });
-      */
+
     }
 
-  
+
 
 
 

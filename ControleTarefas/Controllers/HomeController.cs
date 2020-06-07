@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ControleTarefas.Models;
+using Microsoft.AspNetCore.Http;
+using ControleTarefas.Classes;
 
 namespace ControleTarefas.Controllers
 {
@@ -33,5 +35,12 @@ namespace ControleTarefas.Controllers
     {
       return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    public static Task ExibeHome(HttpContext context)
+    {
+      var html = HtmlUtils.CarregaArquivoHtml("Home.html"); ;
+      return context.Response.WriteAsync(html);
+    }
+
   }
 }

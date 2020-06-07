@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Exibir Alunos";
+}
+
+<h1>Exibir Alunos</h1>
+<ul>
+  @foreach (var aluno in ViewBag.Alunos)
+  {
+    <li>@aluno.Id - @aluno.Nome</li>
+  }
+  <li></li>
+</ul>
+
