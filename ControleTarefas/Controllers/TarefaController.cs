@@ -61,11 +61,11 @@ namespace ControleTarefas.Controllers
       var tar = _repo.Tarefas().First(l => l.Id == tarefaId);
       tar.Nome = tarefa;
       tar.Materia = materia;
-      if (prazo!=null)
+      if (prazo.Ticks != 0)
       {
         tar.Prazo = prazo;
       }
-      if (entrega != null)
+      if (entrega.Ticks != 0)
       {
         tar.DtEntrega = entrega;
       }

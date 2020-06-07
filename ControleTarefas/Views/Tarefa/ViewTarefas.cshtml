@@ -47,10 +47,10 @@
           @item.Materia
         </td>
         <td>
-          @item.Prazo
+          @item.Prazo.Date.ToString("d")
         </td>
         <td>
-          @item.DtEntrega
+          @item.DtEntrega.Date.ToString("d")
         </td>
         <td>
           @if (item.Prazo >= DateTime.Today)
