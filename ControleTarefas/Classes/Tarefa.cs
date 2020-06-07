@@ -11,6 +11,7 @@ namespace ControleTarefas.Classes
     public int AlunoId { get; set; }
     public Aluno Aluno { get; set; }
     public string Nome { get; set; }
+    public string Materia { get; set; }
     public DateTime Prazo { get; set; }
     public DateTime DtEntrega { get; set; }
 
@@ -18,5 +19,6 @@ namespace ControleTarefas.Classes
     {
       return $"Tarefa \n Id: {Id} \t Matéria:{Nome} \t Aluno:{Aluno.Nome} \t Prazo de Entrega: {Prazo} \t Data de Entrega: {DtEntrega}.";
     }
+
   }
 }

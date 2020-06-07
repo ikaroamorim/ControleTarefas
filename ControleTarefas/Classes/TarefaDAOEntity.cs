@@ -7,7 +7,7 @@ namespace ControleTarefas.Classes
 {
   public class TarefaDAOEntity : IDisposable
   {
-    private TarefaContext contexto;
+    public TarefaContext contexto;
 
     public TarefaDAOEntity()
     {

@@ -23,6 +23,7 @@ namespace ControleTarefas.Controllers
       TarefaDAOEntity dao = new TarefaDAOEntity();
       var aluno = dao.Alunos().First(l => l.Id == id);
       return aluno.ToString();
+      
     }
 
     public string Cadastrar(string nome)
@@ -41,12 +42,6 @@ namespace ControleTarefas.Controllers
       var alunos = _repo.Alunos();
       return View("Exibir");
     }
-
-    public string Teste()
-    {
-      return "Teste";
-    }
-
 
   }
 }

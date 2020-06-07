@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ControleTarefas.Classes.Tarefa>
+
+@{
+  ViewData["Title"] = "ViewTarefas";
+}
+
+<h1>ViewTarefas</h1>
+
+<p>
+  <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        Aluno
+      </th>
+      <th>
+        Atividade
+      </th>
+      <th>
+        Matéria
+      </th>
+      <th>
+        Prazo
+      </th>
+      <th>
+        Data da Entrega
+      </th>
+      <th>
+        Vencido?
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in ViewBag.Tarefas)
+    {
+      <tr>
+        <td>
+        </td>
+        <td>
+          @item.Nome
+        </td>
+        <td>
+          @item.Materia
+        </td>
+        <td>
+          @item.Prazo
+        </td>
+        <td>
+          @item.DtEntrega
+        </td>
+        <td>
+          @if (item.Prazo >= DateTime.Today)
+          {
+            <div class="alert alert-secondary" role="alert">
+              O Prazo de entrega não Chegou!!
+            </div>
+          }
+          @if (item.DtEntrega > item.Prazo && item.Prazo < DateTime.Today)
+          {
+            <div class="alert alert-danger" role="alert">
+              Entrega em atraso
+            </div>
+          }
+          @if (item.DtEntrega <= item.Prazo && item.Prazo < DateTime.Today)
+          {
+            <div class="alert alert-success" role="alert">
+              Entrega no prazo!!
+            </div>
+          }
+        </td>
+
+      </tr>
+    }
+  </tbody>
+</table>
+<a href="/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar para Home!</a>
+
