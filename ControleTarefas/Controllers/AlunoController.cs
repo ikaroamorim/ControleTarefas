@@ -14,8 +14,7 @@ namespace ControleTarefas.Controllers
   {
     public IActionResult AddForm()
     {
-      var html = new ViewResult { ViewName = "AddAlunoForm"};
-      return html;
+      return View("AddAlunoForm");
     }
     
     public string Consulta(int id)
@@ -26,21 +25,45 @@ namespace ControleTarefas.Controllers
       
     }
 
-    public string Cadastrar(string nome)
+    public IActionResult Cadastrar(string nome)
     {
       Aluno a1 = new Aluno();
       a1.Nome = nome;
       TarefaDAOEntity dao = new TarefaDAOEntity();
       dao.AdicionaraAluno(a1);
-      return a1.ToString();
+      return View("DoneAction");
     }
 
     public IActionResult Exibir()
     {
       var _repo = new TarefaDAOEntity();
       ViewBag.Alunos = _repo.Alunos();
-      var alunos = _repo.Alunos();
-      return View("Exibir");
+      return View("ViewAlunos");
+    }
+
+    public IActionResult Delete(int alunoId)
+    {
+      var _repo = new TarefaDAOEntity();
+      var aluno = _repo.Alunos().First(l => l.Id == alunoId);
+      _repo.RemoverAluno(aluno);
+      return View("DoneAction");
+    }
+
+    public IActionResult Edit(int alunoId, string nome )
+    {
+      var _repo = new TarefaDAOEntity();
+      var al = _repo.Alunos().First(l => l.Id == alunoId);
+      al.Nome = nome;
+      _repo.AtualizarAluno(al);
+      return View("DoneAction");
+    }
+
+    public IActionResult EditForm(int alunoId)
+    {
+      var _repo = new TarefaDAOEntity();
+      ViewBag.Aluno = _repo.Alunos().First(l => l.Id == alunoId);
+
+      return View("EditForm");
     }
 
   }

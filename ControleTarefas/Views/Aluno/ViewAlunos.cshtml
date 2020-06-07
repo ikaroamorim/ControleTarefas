@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ControleTarefas.Classes.Aluno>
+
+@{
+    ViewData["Title"] = "ViewAlunos";
+}
+
+<h1>Visualizar Alunos</h1>
+
+<p>
+    <a asp-action="AddForm">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nome do Aluno
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in @ViewBag.Alunos) {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Nome
+            </td>
+            <td>
+              <a href="/Aluno/EditForm?alunoId=@item.Id"><button type="button" class="btn btn-warning">Editar</button></a>
+              <a href="/Aluno/Delete?alunoId=@item.Id"><button type="button" class="btn btn-danger">Excluir</button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a href="/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Voltar para Home!</a>
