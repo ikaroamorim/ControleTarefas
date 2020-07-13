@@ -50,7 +50,16 @@
           @item.Prazo.Date.ToString("d")
         </td>
         <td>
-          @item.DtEntrega.Date.ToString("d")
+          @if (item.DtEntrega == new DateTime())
+          {
+            <div></div>
+          }
+          else
+          {
+            @item.DtEntrega.Date.ToString("d")
+          }
+
+
         </td>
         <td>
           @if (item.Prazo >= DateTime.Today)
